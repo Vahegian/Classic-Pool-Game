@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF8">
+    <title>Classic Pool Game</title>
+    {{#unless release}}
+    {{live_update}}
+    {{/unless}}
+    {{import_css "static/css/game-layout.css"}}
+    {{web_component "https://github.com/anspar/arag_common_libs/releases/download/v0.1/build.html"}}
+</head>
+
+<body style = "background-color:black">
+{{web_component "https://github.com/anspar/wallet/releases/download/v0.19/build.html"}}
+<div id="gameArea">
+    <canvas id="screen" width="2000" height="1000"></canvas>
+</div>
+<div id="hosq-provider">
+    {{web_component "https://github.com/anspar/hosq_provider/releases/download/v0.7/build.html"}}
+</div>
+
+{{import_js "static/script/system/Keys.js"}}
+{{import_js "static/script/system/Color.js"}}
+{{import_js "static/script/geom/Vector2.js"}}
+{{import_js "static/script/input/ButtonState.js"}}
+{{import_js "static/script/input/Keyboard.js"}}
+{{import_js "static/script/input/Mouse.js"}}
+{{import_js "static/script/Global.js"}}
+{{import_js "static/script/Canvas2D.js"}}
+{{import_js "static/script/game_objects/Score.js"}}
+{{import_js "static/script/game_objects/Ball.js"}}
+{{import_js "static/script/game_objects/Stick.js"}}
+{{import_js "static/script/menu/Label.js"}}
+{{import_js "static/script/menu/Button.js"}}
+{{import_js "static/script/menu/Menu.js"}}
+{{import_js "static/script/menu/MainMenu.js"}}
+{{import_js "static/script/AI/Opponent.js"}}
+{{import_js "static/script/AI/AIPolicy.js"}}
+{{import_js "static/script/AI/AITrainer.js"}}
+{{import_js "static/script/game_objects/Player.js"}}
+{{import_js "static/script/GamePolicy.js"}}
+{{import_js "static/script/GameWorld.js"}}
+{{import_js "static/script/Game.js"}}
+{{>assets}}
+
+<script>
+    document.addEventListener("DOMContentLoaded", async function(){
+        if(typeof WALLET === "undefined") {
+            alert("WALLET Object Not found")
+            return
+        }
+
+        await WALLET.setup();
+        await HOSQ_PROVIDER.setup();
+        if(await HOSQ_PROVIDER.is_ready()){
+            await WALLET.update_user_ans(false);
+        }
+        Game.start('gameArea', 'screen', 1500, 825);
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+port: 11213
+dependencies:
+  - "https://github.com/anspar/wallet/releases/download/v0.19/build.html"
+  - "https://github.com/anspar/arag_common_libs/releases/download/v0.1/build.html"
+  - "https://github.com/anspar/hosq_provider/releases/download/v0.7/build.html"

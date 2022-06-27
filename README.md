@@ -1,4 +1,4 @@
-<h1>Classic-Pool-Game</h1>
+<h1>Classic-Pool-Game (NFT)</h1>
 <small>© Chen Shmilovich - 2018.</small>
 <br>
 

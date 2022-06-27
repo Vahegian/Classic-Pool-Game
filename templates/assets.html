@@ -1,0 +1,64 @@
+<script>
+    var sprites = {};
+    var sounds = {};
+    Game.loadAssets = function () {
+        sprites.mainMenuBackground = Game.loadSprite("{{import_img "static/assets/sprites/main_menu_background.png"}}");
+        sprites.background = Game.loadSprite("{{import_img "static/assets/sprites/spr_background4.png"}}");
+        sprites.ball = Game.loadSprite("{{import_img "static/assets/sprites/spr_ball2.png"}}");
+        sprites.redBall = Game.loadSprite("{{import_img "static/assets/sprites/spr_redBall2.png"}}");
+        sprites.yellowBall = Game.loadSprite("{{import_img "static/assets/sprites/spr_yellowBall2.png"}}");
+        sprites.blackBall = Game.loadSprite("{{import_img "static/assets/sprites/spr_blackBall2.png"}}");
+        sprites.stick = Game.loadSprite("{{import_img "static/assets/sprites/spr_stick.png"}}");
+        sprites.twoPlayersButton = Game.loadSprite("{{import_img "static/assets/sprites/2_players_button.png"}}");
+        sprites.twoPlayersButtonHover = Game.loadSprite("{{import_img "static/assets/sprites/2_players_button_hover.png"}}");
+        sprites.onePlayersButton = Game.loadSprite("{{import_img "static/assets/sprites/1_player_button.png"}}");
+        sprites.onePlayersButtonHover = Game.loadSprite("{{import_img "static/assets/sprites/1_player_button_hover.png"}}");
+        sprites.muteButton = Game.loadSprite("{{import_img "static/assets/sprites/mute_button.png"}}");
+        sprites.muteButtonHover = Game.loadSprite("{{import_img "static/assets/sprites/mute_button_hover.png"}}");
+        sprites.muteButtonPressed = Game.loadSprite("{{import_img "static/assets/sprites/mute_button_pressed.png"}}");
+        sprites.muteButtonPressedHover = Game.loadSprite("{{import_img "static/assets/sprites/mute_button_pressed_hover.png"}}");
+        sprites.easyButton = Game.loadSprite("{{import_img "static/assets/sprites/easy_button.png"}}");
+        sprites.easyButtonHover = Game.loadSprite("{{import_img "static/assets/sprites/easy_button_hover.png"}}");
+        sprites.mediumButton = Game.loadSprite("{{import_img "static/assets/sprites/medium_button.png"}}");
+        sprites.mediumButtonHover = Game.loadSprite("{{import_img "static/assets/sprites/medium_button_hover.png"}}");
+        sprites.hardButton = Game.loadSprite("{{import_img "static/assets/sprites/hard_button.png"}}");
+        sprites.hardButtonHover = Game.loadSprite("{{import_img "static/assets/sprites/hard_button_hover.png"}}");
+        sprites.backButton = Game.loadSprite("{{import_img "static/assets/sprites/back_button.png"}}");
+        sprites.backButtonHover = Game.loadSprite("{{import_img "static/assets/sprites/back_button_hover.png"}}");
+        sprites.continueButton = Game.loadSprite("{{import_img "static/assets/sprites/continue_button.png"}}");
+        sprites.continueButtonHover = Game.loadSprite("{{import_img "static/assets/sprites/continue_button_hover.png"}}");
+        sprites.insaneButton = Game.loadSprite("{{import_img "static/assets/sprites/insane_button.png"}}");
+        sprites.insaneButtonHover = Game.loadSprite("{{import_img "static/assets/sprites/insane_button_hover.png"}}");
+        sprites.aboutButton = Game.loadSprite("{{import_img "static/assets/sprites/about_button.png"}}");
+        sprites.aboutButtonHover = Game.loadSprite("{{import_img "static/assets/sprites/about_button_hover.png"}}");
+        sprites.controls = Game.loadSprite("{{import_img "static/assets/sprites/controls.png"}}");
+
+        sounds.side = new Audio("{{import_audio "static/assets/sounds/Side.wav"}}");
+        sounds.ballsCollide = new Audio("{{import_audio "static/assets/sounds/BallsCollide.wav"}}");
+        sounds.strike = new Audio("{{import_audio "static/assets/sounds/Strike.wav"}}");
+        sounds.hole = new Audio("{{import_audio "static/assets/sounds/Hole.wav"}}");
+
+        // Bossa Antigua Kevin MacLeod (incompetech.com)
+        // Licensed under Creative Commons: By Attribution 3.0 License
+        // http://creativecommons.org/licenses/by/3.0/
+        sounds.jazzTune = new Audio("{{import_audio "static/assets/sounds/Bossa Antigua.mp3"}}");
+    }
+
+    sounds.fadeOut = function (sound) {
+
+        var fadeAudio = setInterval(function () {
+
+            if (GAME_STOPPED)
+                return;
+
+            // Only fade if past the fade out point or not at zero already
+            if ((sound.volume >= 0.05)) {
+                sound.volume -= 0.05;
+            }
+            else {
+                sound.pause();
+                clearInterval(fadeAudio);
+            }
+        }, 400);
+    }
+</script>
